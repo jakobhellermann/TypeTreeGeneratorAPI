@@ -14,7 +14,7 @@ class Program
 
         var backendOption = new Option<string>(
             aliases: ["--backend", "-b"],
-            description: "The backend to use (AssetStudio, AssetsTools, AssetRipper)",
+            description: "The backend to use (AssetsTools, AssetRipper)",
             getDefaultValue: () => "AssetsTools"
         );
 
