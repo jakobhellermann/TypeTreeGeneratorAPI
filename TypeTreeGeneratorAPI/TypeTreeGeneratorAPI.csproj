@@ -24,8 +24,4 @@
 	
 	<ItemGroup>
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <ProjectReference Include="..\AssetRipper\Source\AssetRipper.SerializationLogic\AssetRipper.SerializationLogic.csproj" />
-	</ItemGroup>
 </Project>

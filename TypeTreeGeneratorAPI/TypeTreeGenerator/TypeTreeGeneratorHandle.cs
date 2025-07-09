@@ -11,9 +11,6 @@
                 case "AssetsTools":
                     Instance = new AssetsTools.AssetsToolsGenerator(unityVersionString);
                     break;
-                case "AssetRipper":
-                    Instance = new AssetRipper.AssetRipperGenerator(unityVersionString);
-                    break;
                 default:
                     throw new ArgumentException($"Unknown TypeTreeGenerator type: {type}");
             }
