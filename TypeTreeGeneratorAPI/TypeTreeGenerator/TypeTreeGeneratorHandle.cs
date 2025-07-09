@@ -8,9 +8,6 @@
         {
             switch (type)
             {
-                case "AssetStudio":
-                    Instance = new AssetStudio.AssetStudioGenerator(unityVersionString);
-                    break;
                 case "AssetsTools":
                     Instance = new AssetsTools.AssetsToolsGenerator(unityVersionString);
                     break;
