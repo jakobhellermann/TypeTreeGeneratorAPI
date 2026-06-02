@@ -57,13 +57,17 @@
 		<ProjectReference Include="..\AssetRipper\Source\AssetRipper.SerializationLogic\AssetRipper.SerializationLogic.csproj" />
 	</ItemGroup>
 
+	<!-- Local AssetsTools.NET fork (jakobhellermann, branch `wip`): carries fixes
+	     not yet in the 3.0.4 NuGet packages (IntPtr/pointer fields, unresolvable
+	     types). Override with -p:AssetsToolsDir=/path if checked out elsewhere.
+	     ProjectReference rather than PackageReference because NuGet can't consume
+	     a git branch; the MonoCecil/Cpp2IL projects pull in the core transitively. -->
+	<PropertyGroup>
+		<AssetsToolsDir Condition="'$(AssetsToolsDir)' == ''">/home/jakob/dev/unity/AssetsTools.NET</AssetsToolsDir>
+	</PropertyGroup>
+
 	<ItemGroup Condition="'$(EnableAssetsTools)' == 'true'">
-		<PackageReference Include="AssetsTools.NET.MonoCecil" Version="3.0.4" />
-		<!-- MonoCecil/Cpp2IL 3.0.4 declare AssetsTools.NET >= 3.0.0, so NuGet would
-		     resolve the core to 3.0.0 — but the 3.0.4 MonoCecil assembly calls
-		     CommonMonoTemplateHelper APIs (e.g. SphericalHarmonicsL2(UnityVersion))
-		     that only exist in core 3.0.4. Pin the core explicitly. -->
-		<PackageReference Include="AssetsTools.NET" Version="3.0.4" />
+		<ProjectReference Include="$(AssetsToolsDir)\AssetsTools.NET.MonoCecil\AssetsTools.NET.MonoCecil.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(EnableAssetsTools)' or '$(EnableAssetStudio)' == 'true'">
@@ -71,7 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(EnableIL2CPP)' == 'true' and '$(EnableAssetsTools)' == 'true'">
-		<PackageReference Include="AssetsTools.NET.Cpp2IL" Version="3.0.4" />
+		<ProjectReference Include="$(AssetsToolsDir)\AssetsTools.NET.Cpp2IL\AssetsTools.NET.Cpp2IL.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(EnableAssetStudio)' == 'true'">
