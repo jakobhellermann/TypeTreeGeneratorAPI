@@ -51,7 +51,13 @@ namespace TypeTreeGeneratorAPI.TypeTreeGenerator.AssetsTools
             {
                 assemblyName += ".dll";
             }
-            var asm = loadedAssemblies[assemblyName];
+            // The script's assembly may not have been loaded (e.g. an editor-only
+            // assembly absent from a player build); report not-found instead of
+            // throwing KeyNotFoundException.
+            if (!loadedAssemblies.TryGetValue(assemblyName, out var asm))
+            {
+                return null;
+            }
 
             List<AssetTypeTemplateField> newFields = Read(asm, nameSpace, className, unityVersion);
             if (newFields == null)
