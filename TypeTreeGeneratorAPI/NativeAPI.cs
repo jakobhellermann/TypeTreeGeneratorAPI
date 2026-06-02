@@ -205,7 +205,7 @@ namespace TypeTreeGeneratorAPI
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error generating tree nodes:\n{ex.Message}");
+                Console.WriteLine($"Error generating tree nodes:\n{ex}");
                 return GenerateTreeNodesResult.Error;
             }
         }
@@ -239,7 +239,7 @@ namespace TypeTreeGeneratorAPI
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error generating tree nodes:\n{ex.Message}");
+                Console.WriteLine($"Error generating tree nodes:\n{ex}");
                 return GenerateTreeNodesResult.Error;
             }
         }
