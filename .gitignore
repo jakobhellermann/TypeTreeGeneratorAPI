@@ -407,4 +407,6 @@ FodyWeavers.xsd
 # Built binaries
 *.dll
 *.so 
+*.so.dbg
+*.NET.xml
 *.dylib
